@@ -45,7 +45,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          cwd: .
+          cwd: metadata-package
           publish: npm publish --access public --provenance
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
