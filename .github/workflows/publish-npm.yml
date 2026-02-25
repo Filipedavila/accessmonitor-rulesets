@@ -34,17 +34,11 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-      - name: Debug Changeset Path
-        run: |
-          echo "Onde estou?" && pwd
-          echo 'Estrutura da pasta metadata-package:'
-          ls -R metadata-package/
-
+        
       - name: Create Release PR or Publish
         id: changesets
         uses: changesets/action@v1
         with:
           publish: npm publish --access public --provenance
-          cwd: metadata-package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
