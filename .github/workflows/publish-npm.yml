@@ -34,6 +34,11 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+      - name: Debug Changeset Path
+        run: |
+          echo "Onde estou?" && pwd
+          echo 'Estrutura da pasta metadata-package:'
+          ls -R metadata-package/
 
       - name: Create Release PR or Publish
         id: changesets
