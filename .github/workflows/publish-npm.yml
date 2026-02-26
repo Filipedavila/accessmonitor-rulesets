@@ -31,6 +31,7 @@ jobs:
         run: npm install
         working-directory: ./metadata-package
       - name: Debug Changeset Path
+        working-directory: ./metadata-package
         run: |
           echo "Onde estou?" && pwd
           echo "O que vejo aqui dentro?"
