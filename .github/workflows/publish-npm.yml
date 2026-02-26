@@ -38,11 +38,17 @@ jobs:
           ls -la
           echo "Consigo ver a pasta .changeset?"
           ls -la .changeset/ || echo "Pasta .changeset não encontrada!"
-      - name: Create Release PR or Publish
+      - name: Publish to NPM (Manual CLI)
         id: changesets
-        uses: changesets/action@v1
-        with:
-          cwd: ./metadata-package
-          publish: npm publish --access public --provenance
+        working-directory: ./metadata-package 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Starting publishing."
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          npx changeset version
+          
+          npx changeset publish
