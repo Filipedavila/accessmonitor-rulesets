@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'metadata-package/src/tests-metadata.ts'
+      - 'metadata-package/**'
   workflow_dispatch: 
 
 jobs:
@@ -15,10 +15,6 @@ jobs:
       contents: write  
       pull-requests: write 
       id-token: write  
-    
-    defaults:
-      run:
-        working-directory: ./metadata-package
 
     steps:
       - name: Checkout Repository
@@ -31,9 +27,9 @@ jobs:
         with:
           node-version: '20'
 
-
       - name: Install Dependencies
         run: npm install
+        working-directory: ./metadata-package
       - name: Debug Changeset Path
         run: |
           echo "Onde estou?" && pwd
@@ -45,7 +41,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          cwd: metadata-package
+          cwd: ./metadata-package
           publish: npm publish --access public --provenance
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
