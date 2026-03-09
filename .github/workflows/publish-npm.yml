@@ -1,11 +1,11 @@
-name: Publish NPM @arte-pt/accessmonitor-rulesets Package
+name: Publish NPM @a12e/accessmonitor-rulesets Package
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'metadata-package/src/tests-metadata.ts'
+      - 'src/tests-metadata.ts'
   workflow_dispatch: 
 
 jobs:
@@ -15,10 +15,6 @@ jobs:
       contents: write  
       pull-requests: write 
       id-token: write  
-    
-    defaults:
-      run:
-        working-directory: ./metadata-package
 
     steps:
       - name: Checkout Repository
@@ -34,18 +30,10 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-      - name: Debug Changeset Path
-        run: |
-          echo "Onde estou?" && pwd
-          echo "O que vejo aqui dentro?"
-          ls -la
-          echo "Consigo ver a pasta .changeset?"
-          ls -la .changeset/ || echo "Pasta .changeset não encontrada!"
       - name: Create Release PR or Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          cwd: .
           publish: npm publish --access public --provenance
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: tesste

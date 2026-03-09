@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 const RULES_DIR = './en'; 
-const OUTPUT_FILE = './metadata-package/src/tests-metadata.ts';
+const OUTPUT_FILE = './src/tests-metadata.ts';
 
 function generateRuleset() {
     const files = fs.readdirSync(RULES_DIR);
