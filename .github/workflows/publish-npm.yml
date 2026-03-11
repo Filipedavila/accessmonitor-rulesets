@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@a12e'
 
       - name: Install Dependencies
         run: npm ci
