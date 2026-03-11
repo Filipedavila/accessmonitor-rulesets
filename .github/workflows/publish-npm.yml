@@ -1,11 +1,12 @@
-name: Publish NPM @arte-pt/accessmonitor-rulesets Package
+name: Publish NPM @a12e/accessmonitor-rulesets Package
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'metadata-package/src/tests-metadata.ts'
+      - 'src/tests-metadata.ts'
+      - '.changeset/**'
   workflow_dispatch: 
 
 jobs:
@@ -15,10 +16,6 @@ jobs:
       contents: write  
       pull-requests: write 
       id-token: write  
-    
-    defaults:
-      run:
-        working-directory: ./metadata-package
 
     steps:
       - name: Checkout Repository
@@ -30,16 +27,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: npm install
-
+      
+      - name: Build Package
+        run: npm run build
+        
       - name: Create Release PR or Publish
         id: changesets
         uses: changesets/action@v1
         with:
           publish: npm publish --access public --provenance
-          cwd: metadata-package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

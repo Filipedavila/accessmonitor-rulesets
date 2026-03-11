@@ -1,26 +1,49 @@
 {
-  "name": "accessmonitor-rulesets",
+  "name": "@a12e/accessmonitor-rulesets",
   "version": "1.0.0",
-  "description": "AccessMonitor is an evaluation tool of web content accessibility guidelines according to the recomendation of the <a href=\"https://www.w3.org/TR/WCAG21/\"><abbr title=\"World Wide Web Consortium\">W3C</abbr>: <abbr title=\"Web Content Accessibility Guidelines, version 2.1\">WCAG 2.1</abbr></a>. AccessMonitor implements the rules certified by the [ACT Rules Community Group](https://act-rules.github.io/rules/).",
-  "main": "index.js",
+  "description": "Set of tests metadata to serve AccessMonitor, AdminMonitorServer, MyMonitor and Portuguese Observatory of Web Accessibility",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --minify",
+    "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
+    "lint": "tsc",
     "validate": "node validate-md-structure.js",
     "generate": "node generate-rulesets.js",
-    "diff": "node check-md-diff.js"
+    "diff": "node check-md-diff.js",
+    "format": "prettier --write \"**/*.{js,ts,json}\"",
+    "format:check": "prettier --check \"**/*.{js,ts,json}\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Filipedavila/accessmonitor-rulesets.git"
+    "url": "git+https://github.com/amagovpt/accessmonitor-rulesets.git"
   },
-  "author": "Filipe Davila",
-  "license": "ISC",
+  "keywords": [
+    "accessibility",
+    "ARTE"
+  ],
+  "author": "Filipe Dávila",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Filipedavila/accessmonitor-rulesets/issues"
+    "url": "https://github.com/amagovpt/accessmonitor-rulesets/issues"
   },
-  "homepage": "https://github.com/Filipedavila/accessmonitor-rulesets#readme",
+  "homepage": "https://github.com/amagovpt/accessmonitor-rulesets#readme",
   "devDependencies": {
-    "fs": "^0.0.1-security",
+    "@changesets/cli": "^2.29.8",
     "gray-matter": "^4.0.3",
-    "path": "^0.12.7"
+    "prettier": "3.8.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   }
 }

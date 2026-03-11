@@ -48,12 +48,10 @@ jobs:
         run: npm run generate
       - name: Install Metadata Package Dependencies
         run: npm install
-        working-directory: ./metadata-package
       - name: Try Build to Ensure No Errors
         run: npm run build
-        working-directory: ./metadata-package
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: auto-update metadata upon markdown metadata changes"
-          file_pattern: 'metadata-package/src/tests-metadata.ts'
+          file_pattern: 'src/tests-metadata.ts'
