@@ -2,6 +2,11 @@ export { ruleset } from './tests-metadata';
 export { testColors } from './tests_colors';
 export { techniques } from './tech';
 export { successCriteria } from './scs';
+export { generateScore } from './scoring';
+export { TestDefinition } from './types';
+export { DOMAIN_MAPPING, RuleConfig, QualWebKeyTranslator, QualWebRuleID } from './ruleset.mapping';
+export { MappingResult, RuleMetrics, getElementsMapping } from './mapper';
+
 import ptRaw from '../locale/pt.json';
 import enRaw from '../locale/en.json';
 import { Translations, Translation } from './types';
