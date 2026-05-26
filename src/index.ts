@@ -3,9 +3,11 @@ export { testColors } from './tests_colors';
 export { techniques } from './tech';
 export { successCriteria } from './scs';
 export { generateScore } from './scoring';
-export { TestDefinition } from './types';
-export { DOMAIN_MAPPING, RuleConfig, QualWebKeyTranslator, QualWebRuleID } from './ruleset.mapping';
-export { MappingResult, RuleMetrics, getElementsMapping } from './mapper';
+export type { TestDefinition } from './types';
+export  type {  RuleConfig, QualWebKeyTranslator, QualWebRuleID } from './ruleset.mapping';
+export {DOMAIN_MAPPING} from './ruleset.mapping';
+export type { MappingResult, RuleMetrics } from './mapper';
+export { getElementsMapping } from './mapper';
 
 import ptRaw from '../locale/pt.json';
 import enRaw from '../locale/en.json';
