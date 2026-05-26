@@ -1,6 +1,6 @@
 import { QualWeb, QualwebOptions } from "@qualweb/core";
 import { ACTRules } from "@qualweb/act-rules";
-import { WCAGTechniques } from '@qualweb/wcag-techniques';
+import  { WCAGTechniques } from '@qualweb/wcag-techniques';
 import { BestPractices } from "@qualweb/best-practices";
 //import { Counter } from "@qualweb/counter";
 import { getElementsMapping } from '../src/mapper';

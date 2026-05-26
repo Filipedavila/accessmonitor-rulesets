@@ -1,4 +1,4 @@
-name: test-suite
+name: Unit Tests and E2E Tests suite
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - develop
 
 jobs:
-  publish:
+  tests:
     runs-on: ubuntu-latest
     permissions:
       contents: read  
@@ -24,7 +24,8 @@ jobs:
           node-version: '24'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
+        
       - name: Install Puppeteer System Dependencies
         run: |
           sudo apt-get update
